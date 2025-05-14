@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Points Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .points-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .points-table th, .points-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .points-table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .points-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .points-table tr:hover {
+            background-color: #ddd;
+        }
+        .update-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .update-form input, .update-form button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cricket Points Table</h1>
+
+    <!-- Group A Table -->
+    <table class="points-table" id="groupA">
+        <caption><strong>Group A</strong></caption>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>P</th>
+                <th>W</th>
+                <th>L</th>
+                <th>Pts</th>
+                <th>NRR</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="groupABody">
+            <tr><td>Sunny</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupA')">Edit</button></td></tr>
+            <tr><td>Nithin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupA')">Edit</button></td></tr>
+            <tr><td>Manoj</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupA')">Edit</button></td></tr>
+            <tr><td>Sheaker</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupA')">Edit</button></td></tr>
+            <tr><td>Yogesh</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupA')">Edit</button></td></tr>
+            <tr><td>Lucky</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupA')">Edit</button></td></tr>
+            <tr><td>Santhu</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupA')">Edit</button></td></tr>
+        </tbody>
+    </table>
+
+    <!-- Group B Table -->
+    <table class="points-table" id="groupB">
+        <caption><strong>Group B</strong></caption>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>P</th>
+                <th>W</th>
+                <th>L</th>
+                <th>Pts</th>
+                <th>NRR</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="groupBBody">
+            <tr><td>Jeshu</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupB')">Edit</button></td></tr>
+            <tr><td>Shashi</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupB')">Edit</button></td></tr>
+            <tr><td>Hari</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupB')">Edit</button></td></tr>
+            <tr><td>Rithik</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupB')">Edit</button></td></tr>
+            <tr><td>Dhanush</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupB')">Edit</button></td></tr>
+            <tr><td>Manohar</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupB')">Edit</button></td></tr>
+            <tr><td>Teja</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td><button onclick="editRow(this, 'groupB')">Edit</button></td></tr>
+        </tbody>
+    </table>
+
+    <!-- Update Form -->
+    <div class="update-form">
+        <h2>Update Match Results</h2>
+        <label for="team">Team Name:</label>
+        <input type="text" id="team" placeholder="Enter Team Name" required>
+        <label for="matches">Matches Played:</label>
+        <input type="number" id="matches" placeholder="Enter Matches Played" required>
+        <label for="wins">Wins:</label>
+        <input type="number" id="wins" placeholder="Enter Wins" required>
+        <label for="losses">Losses:</label>
+        <input type="number" id="losses" placeholder="Enter Losses" required>
+        <label for="points">Points:</label>
+        <input type="number" id="points" placeholder="Enter Points" required>
+        <label for="nrr">Net Run Rate:</label>
+        <input type="text" id="nrr" placeholder="Enter NRR" required>
+        <button onclick="updatePointsTable()">Update Table</button>
+    </div>
+
+    <script>
+        let editingRow = null;
+        let editingGroup = '';
+
+        function editRow(button, group) {
+            // Find the row containing the clicked "Edit" button
+            const row = button.closest('tr');
+            const cells = row.getElementsByTagName('td');
+
+            // Fill in the input fields with the current row values
+            document.getElementById('team').value = cells[0].innerText;
+            document.getElementById('matches').value = cells[1].innerText;
+            document.getElementById('wins').value = cells[2].innerText;
+            document.getElementById('losses').value = cells[3].innerText;
+            document.getElementById('points').value = cells[4].innerText;
+            document.getElementById('nrr').value = cells[5].innerText;
+
+            // Set the row being edited and group
+            editingRow = row;
+            editingGroup = group;
+
+            // Change the button text to "Save"
+            button.innerText = 'Save';
+            button.setAttribute('onclick', 'saveRow(this)');
+        }
+
+        function saveRow(button) {
+            // Get the current values from the input fields
+            const teamName = document.getElementById('team').value;
+            const matches = document.getElementById('matches').value;
+            const wins = document.getElementById('wins').value;
+            const losses = document.getElementById('losses').value;
+            const points = document.getElementById('points').value;
+            const nrr = document.getElementById('nrr').value;
+
+            // Update the row cells with the new values
+            editingRow.cells[0].innerText = teamName;
+            editingRow.cells[1].innerText = matches;
+            editingRow.cells[2].innerText = wins;
+            editingRow.cells[3].innerText = losses;
+            editingRow.cells[4].innerText = points;
+            editingRow.cells[5].innerText = nrr;
+
+            // Reset the editing state
+            editingRow = null;
+            editingGroup = '';
+
+            // Reset the button text back to "Edit"
+            button.innerText = 'Edit';
+            button.setAttribute('onclick', 'editRow(this, "' + editingGroup + '")');
+        }
+
+        function updatePointsTable() {
+            const teamName = document.getElementById('team').value.trim();
+            const matches = document.getElementById('matches').value;
+            const wins = document.getElementById('wins').value;
+            const losses = document.getElementById('losses').value;
+            const points = document.getElementById('points').value;
+            const nrr = document.getElementById('nrr').value;
+
+            let tableId = editingGroup === 'groupA' ? 'groupABody' : 'groupBBody';
+            const table = document.getElementById(tableId);
+            let updated = false;
+
+            for (let row of table.rows) {
+                if (row.cells[0].innerText.trim() === teamName) {
+                    row.cells[1].innerText = matches;
+                    row.cells[2].innerText = wins;
+                    row.cells[3].innerText = losses;
+                    row.cells[4].innerText = points;
+                    row.cells[5].innerText = nrr;
+                    updated = true;
+                    break;
+                }
+            }
+
+            if (!updated) {
+                alert("Team not found in the points table.");
+            } else {
+                alert("Points table updated successfully.");
+            }
+        }
+    </script>
+</body>
+</html>
